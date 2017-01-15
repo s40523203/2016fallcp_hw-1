@@ -341,18 +341,24 @@ brython(1);
 }
 </script>
 
+<!-- 以下實際利用  Brython 畫圖 -->
+
 <script type="text/python3">
 from browser import document
 from browser import alert
 
 def get_input(ev):
-    the_input= input("請輸入")
+    ("the_input= input請輸入")
     alert("輸入為:"+str(the_input))
 
-    document['ch01'].bind('click',get_input)
+document['ch01'].bind('click',get_input)
+
 </script>
 
 <p><button id="ch01">取輸入後, 列印出來</button></p>
+
+<!-- 心得 -->
+
 <p>心得:第15週主要學習的是用程式設計出一個小視窗 ，在裡面輸入數字後會列印在下方空白處，可是我們組在操作時遇到非常大的問題，因為我們不管怎麼做都沒有反應，可是在網頁上卻是有顯示出來，目前還是沒有想到辦法解決</p>
 <p>w16週心得與程式範例:</p>
 <!-- PELICAN_END_SUMMARY -->
@@ -373,25 +379,32 @@ brython(1);
 </script>
 
 <script type="text/python3">
+from browser import document
 from browser import alert
 import random
 
-ans = random.randint(1, 100)
+def a_input(ev):
+    ans = random.randint(1, 100)
 
-a_in = int(input("輸入整數:"))
-guess = 1
+    a_in = int(input("輸入整數:"))
+    guess = 1
 
-while ans != a_in:
-    if a_in < ans:
-        a_in = int(input("too small"))
-    else:
-        a_in = int(input("too big"))
-    guess += 1
+    while ans != a_in:
+        if a_in < ans:
+            a_in = int(input("too small"))
+        else:
+            a_in = int(input("too big"))
+        guess += 1
 
-alert("恭喜答對 ,一共猜了" + (str(guess)) + "次")
+    alert("恭喜答對 ,一共猜了" + (str(guess)) + "次")
+
+document['ch02'].bind('click',a_input)
 </script>
 
+<p><button id="ch02">猜數字</button></p>
+
 <p>心得：第16週主要學習的是終極密碼這個小遊戲的設計，設定答案的範圍在1~100間，定義輸入值1，然後用if迴圈定義如果猜的數字太大時顯示too big，太小時顯示too small</p>
+<p><a href="https://vimeo.com/199536969">影片</a></p>
             </div>
             <!-- /.entry-content -->
         </article>
